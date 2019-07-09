@@ -20,7 +20,7 @@ spec.author             = { "vstx143" => "549890753@qq.com" }
 spec.platform     = :ios, "8.0"
 
 spec.source       = { :git => "https://github.com/vstx143/ZJPod.git", :tag => "#{spec.version}" }
-spec.source_files  = './**/*.{h,m}'
+spec.source_files  = 'ZJPod','**/*.{h,m}'
 spec.requires_arc = true
 spec.dependency "DZNEmptyDataSet"
 spec.dependency "MJRefresh"

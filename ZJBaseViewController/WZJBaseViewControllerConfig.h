@@ -29,5 +29,4 @@ typedef void (^LoadEndCallBack)(int state);
 
 #import "WZJBaseCollectionViewController.h"
 #import "WZJBaseTableViewController.h"
-#import "WZJBaseViewController.h"
 #endif /* WZJBaseViewControllerConfig_h */
