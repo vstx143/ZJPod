@@ -12,75 +12,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage(WExtension)
 
+#pragma mark --- 创建单色UIImage
 /**
- *  返回拉伸图片
- */
-+ (UIImage *)w_resizedImage:(NSString *)name;
-/**
- *  用颜色返回一张图片
+ 生成一张到脚图片
+ 
+ @param color 图片颜色
+ @return 图片
  */
 + (UIImage *)w_createImageWithColor:(UIColor*) color;
 /**
- *  用颜色返回一张图片自定义倒脚图
- */
-+ (UIImage *)w_createImageWithColor:(UIColor*) color raduis:(CGFloat)raduis type:(UIRectCorner)type;
-
-/**
- 生成一张到脚图片、设置边框颜色
-
+ 生成一张到脚图片
+ 
  @param color 图片颜色
- @param boundColor 边框颜色
- @param boundWidth 边框宽度
+ @param size 大小
+ @return 图片
+ */
++ (UIImage *)w_createImageWithColor:(UIColor *)color size:(CGSize)size;
+/**
+ 生成一张到脚图片
+ 
+ @param color 图片颜色
  @param raduis 角度
  @param type 要倒的脚
  @return 图片
  */
-+ (UIImage *)w_createImageWithColor:(UIColor*) color boundColor:(UIColor*)boundColor boundWidth:(CGFloat)boundWidth raduis:(CGFloat)raduis type:(UIRectCorner)type;
++ (UIImage *)w_createImageWithColor:(UIColor*) color raduis:(CGFloat)raduis type:(UIRectCorner)type;
 /**
- *  带边框的图片
- *  @param name        图片
- *  @param borderWidth 边框宽度
- *  @param borderColor 边框颜色
+ 生成一张到脚图片、设置边框颜色
+ 
+ @param color 图片颜色
+ @param borderColor 边框颜色
+ @param borderWidth 边框宽度
+ @param raduis 角度
+ @param type 要倒的脚
+ @return 图片
  */
-+ (instancetype)w_circleImageWithName:(NSString *)name borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
-- (instancetype)w_circleImageWithBorderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
++ (UIImage *)w_createImageWithColor:(UIColor*) color borderColor:(UIColor*)borderColor borderWidth:(CGFloat)borderWidth raduis:(CGFloat)raduis type:(UIRectCorner)type;
 
-/**
- *  使用图像名创建图像视图
- *
- *  @param imageName 图像名称
- *
- *  @return UIImageView
- */
-+ (instancetype)w_imageViewWithImageName:(NSString *)imageName;
 
-/**
- * 圆形图片
- */
-- (UIImage *)w_circleImage;
-- (UIImage*)w_transformtoSize:(CGSize)Newsize;
+#pragma mark --- 倒角成圆形图片
+-(UIImage*)w_circleImageWithBorderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+//指定原图大小（原图太大，边线小，显示的小的话图片压缩小了，边线看不见）
+-(UIImage*)w_circleImageWithBorderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor size:(CGSize)size;
 
-/**
- 不模糊缩放图片返回新尺寸图片
- */
-- (UIImage *)w_scaleFromImage:(UIImage *)image toSize:(CGSize)size;
 
-- (UIImage *)w_transformToCircularBeadWithRaduis:(CGFloat)raduis;
+#pragma mark --- 根据CIImage生成指定大小的UIImage
++ (UIImage *)w_createNonInterpolatedUIImageFormCIImage:(CIImage *)image withWidth:(CGFloat)imgWidth;
 
-/**
- * 根据CIImage生成指定大小的UIImage
- *
- * @param image CIImage
- */
-+ (UIImage *)w_createNonInterpolatedUIImageFormCIImage:(CIImage *)image  withWidth:(CGFloat)imgWidth;
 
-- (UIImage*)w_resizeImageGreaterThan:(CGFloat)maxL;
-- (UIImage*)w_resizeImageWithNewSize:(CGSize)newSize;
-/**
- *  获取屏幕截图
- *
- *  @return 屏幕截图图像
- */
+#pragma mark --图片等比缩放
+//变到指定大小
+- (UIImage*)w_scaleImageWithNewSize:(CGSize)size;
+//全显示，等比缩放
+- (UIImage*)w_scaleImageGreaterThan:(CGFloat)maxL;
+//9宫格方式缩放
+- (UIImage *)w_scaleImage;
+
+
+#pragma mark -- 截屏
 + (UIImage *)w_screenShot;
 @end
 
