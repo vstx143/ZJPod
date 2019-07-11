@@ -1,18 +1,18 @@
 //
-//  WZJBaseCollectionViewController.m
-//  WZJBaseViewController
+//  ZJBaseCollectionViewController.m
+//  ZJBaseViewController
 //
 //  Created by mac on 2019/5/8.
 //  Copyright © 2019年 mac. All rights reserved.
 //
 
-#import "WZJBaseCollectionViewController.h"
+#import "ZJBaseCollectionViewController.h"
 #import <MJRefresh/MJRefresh.h>
-@interface WZJBaseCollectionViewController ()
+@interface ZJBaseCollectionViewController ()
 @property(assign)WRefreshType type;
 @end
 
-@implementation WZJBaseCollectionViewController
+@implementation ZJBaseCollectionViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;

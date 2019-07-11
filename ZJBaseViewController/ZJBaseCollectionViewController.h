@@ -1,24 +1,23 @@
 //
-//  WZJBaseTableViewController.h
-//  WZJBaseViewController
+//  ZJBaseCollectionViewController.h
+//  ZJBaseViewController
 //
 //  Created by mac on 2019/5/8.
 //  Copyright © 2019年 mac. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "WZJBaseViewControllerConfig.h"
+#import "ZJBaseViewControllerConfig.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WZJBaseTableViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate,BaseRefreshDelegate>
-@property(nonatomic,strong) UITableView *w_tableView;
+@interface ZJBaseCollectionViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BaseRefreshDelegate>
+@property(nonatomic,strong) UICollectionView *w_collectionView;
 @property(nonatomic,assign) int currentPage;
-
 @property(nonatomic,weak) id<BaseRefreshDelegate> refreshDelegate;
 -(void)addRefreshFunction:(WRefreshType) refreshType;
 -(void)startRequest;
-@end
 
+@end
 
 NS_ASSUME_NONNULL_END

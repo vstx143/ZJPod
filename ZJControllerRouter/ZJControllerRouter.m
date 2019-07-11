@@ -1,14 +1,14 @@
 //
-//  WZJControllerRouter.m
+//  ZJControllerRouter.m
 //  Logistic
 //
 //  Created by mac on 2019/5/7.
 //  Copyright © 2019年 TongRuan. All rights reserved.
 //
 
-#import "WZJControllerRouter.h"
+#import "ZJControllerRouter.h"
 
-@implementation WZJControllerRouter
+@implementation ZJControllerRouter
 #pragma mark -- push
 +(void)pushTarget:(NSString*)className nav:(UINavigationController*)navController{
       [self pushTarget:className title:@"" isInitXib:NO  action:@""  params:@"" nav:navController];

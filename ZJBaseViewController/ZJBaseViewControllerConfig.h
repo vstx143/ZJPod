@@ -1,13 +1,13 @@
 //
-//  WZJBaseViewControllerConfig.h
+//  ZJBaseViewControllerConfig.h
 //  Logistic
 //
 //  Created by mac on 2019/3/25.
 //  Copyright © 2019年 TongRuan. All rights reserved.
 //
 
-#ifndef WZJBaseViewControllerConfig_h
-#define WZJBaseViewControllerConfig_h
+#ifndef ZJBaseViewControllerConfig_h
+#define ZJBaseViewControllerConfig_h
 
 typedef NS_ENUM(NSInteger,WRefreshType) {
     WRefreshTypeNone=0,
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger,WRefreshType) {
     WRefreshTypeAll = 3
 };
 
-typedef void (^LoadEndCallBack)(int state);
+typedef void (^LoadEndCallBack)(MJRefreshState state);
 
 @protocol BaseRefreshDelegate <NSObject>
 -(void)pullDownRefresh:(LoadEndCallBack)callBack;
@@ -27,6 +27,6 @@ typedef void (^LoadEndCallBack)(int state);
 -(void)configCell:(id)cellItem;
 @end
 
-#import "WZJBaseCollectionViewController.h"
-#import "WZJBaseTableViewController.h"
-#endif /* WZJBaseViewControllerConfig_h */
+#import "ZJBaseCollectionViewController.h"
+#import "ZJBaseTableViewController.h"
+#endif /* ZJBaseViewControllerConfig_h */

@@ -3,20 +3,20 @@
 //  WNetwork
 //
 //  Created by mac on 2019/3/20.
-//  Copyright © 2019年 wzj. All rights reserved.
+//  Copyright © 2019年 ZJ. All rights reserved.
 //
 
-#import "WZJNetwork.h"
+#import "ZJNetwork.h"
 #import <AFNetworking/AFNetworking.h>
 
 static  NSString *const KCookieKey = @"WNetworkCookieKey";
 
-@interface WZJNetwork()
+@interface ZJNetwork()
 @property(nonatomic,strong)AFHTTPSessionManager *wSessionManager;
 @end
-@implementation WZJNetwork
-+(WZJNetwork*)shareWZJNetwork{
-    static WZJNetwork *instanceNet = nil;
+@implementation ZJNetwork
++(ZJNetwork*)shareZJNetwork{
+    static ZJNetwork *instanceNet = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instanceNet = [[self alloc]init];
@@ -49,10 +49,7 @@ static  NSString *const KCookieKey = @"WNetworkCookieKey";
     switch (dataType) {
         case RequestDataTypeJson:
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
-            manager.requestSerializer.stringEncoding = NSUTF8StringEncoding;
-            
             manager.responseSerializer = [AFJSONResponseSerializer serializer];
-            manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
             break;
         case RequestDataTypeNormal:
             manager.requestSerializer = [AFHTTPRequestSerializer serializer];

@@ -1,18 +1,18 @@
 //
-//  WZJBaseTableViewController.m
-//  WZJBaseViewController
+//  ZJBaseTableViewController.m
+//  ZJBaseViewController
 //
 //  Created by mac on 2019/5/8.
 //  Copyright © 2019年 mac. All rights reserved.
 //
 
-#import "WZJBaseTableViewController.h"
+#import "ZJBaseTableViewController.h"
 #import <MJRefresh/MJRefresh.h>
-@interface WZJBaseTableViewController ()
+@interface ZJBaseTableViewController ()
 @property(assign)WRefreshType type;
 @end
 
-@implementation WZJBaseTableViewController
+@implementation ZJBaseTableViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;

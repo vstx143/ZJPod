@@ -3,7 +3,7 @@
 //  WNetwork
 //
 //  Created by mac on 2019/3/20.
-//  Copyright © 2019年 wzj. All rights reserved.
+//  Copyright © 2019年 ZJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -24,8 +24,8 @@ typedef NS_ENUM(NSInteger, RequestDataType) {
     RequestHttpResponseHttp
 };
 
-@interface WZJNetwork : NSObject
-+(WZJNetwork*)shareWZJNetwork;
+@interface ZJNetwork : NSObject
++(ZJNetwork*)shareZJNetwork;
 /**
  服务器请求
  @param methodType 请求方法

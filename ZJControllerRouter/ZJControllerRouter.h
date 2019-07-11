@@ -1,5 +1,5 @@
 //
-//  WZJControllerRouter.h
+//  ZJControllerRouter.h
 //  Logistic
 //
 //  Created by mac on 2019/5/7.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WZJControllerRouter : NSObject
+@interface ZJControllerRouter : NSObject
 #pragma mark -- push不回调
 /**
  push 不传参数的类
