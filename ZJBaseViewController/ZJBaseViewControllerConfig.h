@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger,WRefreshType) {
     WRefreshTypeAll = 3
 };
 
-typedef void (^LoadEndCallBack)(MJRefreshState state);
+typedef void (^LoadEndCallBack)(int state);
 
 @protocol BaseRefreshDelegate <NSObject>
 -(void)pullDownRefresh:(LoadEndCallBack)callBack;
