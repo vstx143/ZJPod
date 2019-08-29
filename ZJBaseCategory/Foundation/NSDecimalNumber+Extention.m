@@ -9,6 +9,20 @@
 #import "NSDecimalNumber+Extention.h"
 
 @implementation NSDecimalNumber(Extention)
+//加、减、乘、除
+FOUNDATION_EXPORT NSDecimalNumber *w_add(NSString *oneStr,NSString *twoStr){
+    return [NSDecimalNumber w_addingOneNumberString:oneStr twoNumberString:twoStr];
+}
+FOUNDATION_EXPORT NSDecimalNumber *w_subtracting(NSString *oneStr,NSString *twoStr){
+    return [NSDecimalNumber w_subtractingOneNumberString:oneStr twoNumberString:twoStr];
+}
+FOUNDATION_EXPORT NSDecimalNumber *w_multiplying(NSString *oneStr,NSString *twoStr){
+      return [NSDecimalNumber w_subtractingOneNumberString:oneStr twoNumberString:twoStr];
+}
+FOUNDATION_EXPORT NSDecimalNumber *w_dividing(NSString *oneStr,NSString *twoStr){
+    return [NSDecimalNumber w_dividingOneNumberString:oneStr twoNumberString:twoStr];
+}
+
 +(NSDecimalNumber*)w_addingOneNumberString:(NSString*)oneStr twoNumberString:(NSString*)twoStr{
     NSDecimalNumber *loneStr = [NSDecimalNumber decimalNumberWithString:oneStr];
     NSDecimalNumber *ltwoStr = [NSDecimalNumber decimalNumberWithString:twoStr];

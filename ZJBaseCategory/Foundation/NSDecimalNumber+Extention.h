@@ -11,6 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSDecimalNumber(Extention)
+//加、减、乘、除
+FOUNDATION_EXPORT NSDecimalNumber *w_add(NSString *oneStr,NSString *twoStr);
+FOUNDATION_EXPORT NSDecimalNumber *w_subtracting(NSString *oneStr,NSString *twoStr);
+FOUNDATION_EXPORT NSDecimalNumber *w_multiplying(NSString *oneStr,NSString *twoStr);
+FOUNDATION_EXPORT NSDecimalNumber *w_dividing(NSString *oneStr,NSString *twoStr);
 //加
 +(NSDecimalNumber*)w_addingOneNumberString:(NSString*)oneStr twoNumberString:(NSString*)twoStr;
 //减

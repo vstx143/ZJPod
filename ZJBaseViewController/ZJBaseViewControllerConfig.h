@@ -16,7 +16,20 @@ typedef NS_ENUM(NSInteger,WRefreshType) {
     WRefreshTypeAll = 3
 };
 
-typedef void (^LoadEndCallBack)(int state);
+typedef NS_ENUM(NSInteger,ZJLoadState){
+    /** 普通闲置状态 */
+    ZJLoadStateIdle = 1,
+    /** 松开就可以进行刷新的状态 */
+    ZJLoadStatePulling,
+    /** 正在刷新中的状态 */
+    ZJLoadStateRefreshing,
+    /** 即将刷新的状态 */
+    ZJLoadStateWillRefresh,
+    /** 所有数据加载完毕，没有更多的数据了 */
+    ZJLoadStateNoMoreData
+};
+
+typedef void (^LoadEndCallBack)(ZJLoadState state);
 
 @protocol BaseRefreshDelegate <NSObject>
 -(void)pullDownRefresh:(LoadEndCallBack)callBack;

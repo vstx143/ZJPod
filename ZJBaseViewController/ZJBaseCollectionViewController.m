@@ -9,7 +9,7 @@
 #import "ZJBaseCollectionViewController.h"
 #import <MJRefresh/MJRefresh.h>
 @interface ZJBaseCollectionViewController ()
-@property(assign)WRefreshType type;
+@property(assign)WRefreshType wtype;
 @end
 
 @implementation ZJBaseCollectionViewController
@@ -55,7 +55,7 @@
     return CGSizeZero;
 }
 -(void)startRequest{
-    if (self.type == WRefreshTypeAll || self.type == WRefreshTypePullDown) {
+    if (self.wtype == WRefreshTypeAll || self.wtype == WRefreshTypePullDown) {
         [self.w_collectionView.mj_header beginRefreshing];
     }else{
         [self.w_collectionView.mj_footer beginRefreshing];
@@ -64,9 +64,34 @@
 #pragma mark --- r刷新状态
 -(void)pullUpLoadMore:(LoadEndCallBack)callBack{}
 -(void)pullDownRefresh:(LoadEndCallBack)callBack{}
+
+-(MJRefreshState)covertRefreshStateWithLoadState:(ZJLoadState)state{
+    MJRefreshState lstate = ZJLoadStateIdle;
+    switch (state) {
+        case ZJLoadStateIdle:
+            lstate =MJRefreshStateIdle;
+            break;
+        case ZJLoadStatePulling:
+            lstate =MJRefreshStatePulling;
+            break;
+        case ZJLoadStateRefreshing:
+            lstate =MJRefreshStateRefreshing;
+            break;
+        case ZJLoadStateWillRefresh:
+            lstate =MJRefreshStateWillRefresh;
+            break;
+        case ZJLoadStateNoMoreData:
+            lstate =MJRefreshStateNoMoreData;
+            break;
+            
+        default:
+            break;
+    }
+    return lstate;
+}
 -(void)addRefreshFunction:(WRefreshType) refreshType{
     //
-    self.type = refreshType;
+    self.wtype = refreshType;
     //
     __weak typeof(&*self)weakSelf = self;
     switch (refreshType) {
@@ -74,9 +99,9 @@
         {
             self.w_collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullDownRefresh:)]) {
-                    [weakSelf.refreshDelegate pullDownRefresh:^(int state) {
+                    [weakSelf.refreshDelegate pullDownRefresh:^(ZJLoadState state) {
                         [weakSelf.w_collectionView.mj_header endRefreshing];
-                        if (weakSelf.w_collectionView.mj_footer != nil && state ==MJRefreshStateNoMoreData ) {
+                        if (weakSelf.w_collectionView.mj_footer != nil && [self covertRefreshStateWithLoadState:state] ==MJRefreshStateNoMoreData ) {
                             [weakSelf.w_collectionView.mj_footer endRefreshingWithNoMoreData];
                         }
                     }];
@@ -88,8 +113,8 @@
             
             self.w_collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullUpLoadMore:)]) {
-                    [weakSelf.refreshDelegate pullUpLoadMore:^(int state) {
-                        if (state == MJRefreshStateNoMoreData) {
+                    [weakSelf.refreshDelegate pullUpLoadMore:^(ZJLoadState state) {
+                        if ([self covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
                             [weakSelf.w_collectionView.mj_footer endRefreshingWithNoMoreData];
                         } else {
                             [weakSelf.w_collectionView.mj_footer endRefreshing];
@@ -102,8 +127,8 @@
         case WRefreshTypePullUp:{
             self.w_collectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullUpLoadMore:)]) {
-                    [weakSelf.refreshDelegate pullUpLoadMore:^(int state) {
-                        if (state == MJRefreshStateNoMoreData) {
+                    [weakSelf.refreshDelegate pullUpLoadMore:^(ZJLoadState state) {
+                        if ([self covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
                             [weakSelf.w_collectionView.mj_footer endRefreshingWithNoMoreData];
                         } else {
                             [weakSelf.w_collectionView.mj_footer endRefreshing];
@@ -116,7 +141,7 @@
         case WRefreshTypePullDown:{
             self.w_collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullDownRefresh:)]) {
-                    [weakSelf.refreshDelegate pullDownRefresh:^(int state) {
+                    [weakSelf.refreshDelegate pullDownRefresh:^(ZJLoadState state) {
                         [weakSelf.w_collectionView.mj_header endRefreshing];
                     }];
                 }
