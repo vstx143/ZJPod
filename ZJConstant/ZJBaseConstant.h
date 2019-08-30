@@ -29,7 +29,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define WScaleY (WScreenHeight / 667.0)
 //解除循环引用
 #define WWeakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
-#define WStrongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#define WStrongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
 #define WeakSelf(weakSelf)  __weak typeof(&*self)weakSelf = self;
 //字体
 #define WFontMedium_x(x)   [UIFont systemFontOfSize:x weight:UIFontWeightMedium]
