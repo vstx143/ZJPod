@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
 spec.name         = "ZJPod"
-spec.version      = "1.2.5"
+spec.version      = "1.2.6"
 spec.summary      = "Base Class "
 spec.description  = <<-DESC
 BaseViewController
