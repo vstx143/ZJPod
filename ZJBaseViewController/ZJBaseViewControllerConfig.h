@@ -9,6 +9,8 @@
 #ifndef ZJBaseViewControllerConfig_h
 #define ZJBaseViewControllerConfig_h
 
+#import <Foundation/Foundation.h>
+
 typedef NS_ENUM(NSInteger,WRefreshType) {
     WRefreshTypeNone=0,
     WRefreshTypePullDown = 1,
