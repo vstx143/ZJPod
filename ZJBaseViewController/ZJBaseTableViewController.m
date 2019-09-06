@@ -78,7 +78,7 @@
 -(void)pullDownRefresh:(LoadEndCallBack)callBack{}
 
 -(MJRefreshState)covertRefreshStateWithLoadState:(ZJLoadState)state{
-    MJRefreshState lstate = ZJLoadStateIdle;
+    MJRefreshState lstate = MJRefreshStateIdle;
     switch (state) {
         case ZJLoadStateIdle:
             lstate =MJRefreshStateIdle;
