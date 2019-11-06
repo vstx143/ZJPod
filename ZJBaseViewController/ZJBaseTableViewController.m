@@ -114,7 +114,7 @@
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullDownRefresh:)]) {
                     [weakSelf.refreshDelegate pullDownRefresh:^(ZJLoadState state) {
                             [weakSelf.w_tableView.mj_header endRefreshing];
-                        if (weakSelf.w_tableView.mj_footer != nil && [self covertRefreshStateWithLoadState:state] ==MJRefreshStateNoMoreData ) {
+                        if (weakSelf.w_tableView.mj_footer != nil && [weakSelf covertRefreshStateWithLoadState:state] ==MJRefreshStateNoMoreData ) {
                             [weakSelf.w_tableView.mj_footer endRefreshingWithNoMoreData];
                         }
                     }];
@@ -127,7 +127,7 @@
             self.w_tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullUpLoadMore:)]) {
                     [weakSelf.refreshDelegate pullUpLoadMore:^(ZJLoadState state) {
-                        if ([self covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
+                        if ([weakSelf covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
                             [weakSelf.w_tableView.mj_footer endRefreshingWithNoMoreData];
                         } else {
                             [weakSelf.w_tableView.mj_footer endRefreshing];
@@ -141,7 +141,7 @@
             self.w_tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
                 if (weakSelf.refreshDelegate && [weakSelf respondsToSelector:@selector(pullUpLoadMore:)]) {
                     [weakSelf.refreshDelegate pullUpLoadMore:^(ZJLoadState state) {
-                        if ([self covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
+                        if ([weakSelf covertRefreshStateWithLoadState:state] == MJRefreshStateNoMoreData) {
                             [weakSelf.w_tableView.mj_footer endRefreshingWithNoMoreData];
                         } else {
                             [weakSelf.w_tableView.mj_footer endRefreshing];
