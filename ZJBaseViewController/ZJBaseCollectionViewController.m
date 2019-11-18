@@ -16,6 +16,14 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+#ifdef DEBUG
+    NSLog(@"~~~ZJPod~~~%@~~~~%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+#endif
+}
+- (void)dealloc{
+#ifdef DEBUG
+    NSLog(@"~~~ZJPod~~~%@~~~~%@",NSStringFromClass([self class]),NSStringFromSelector(_cmd));
+#endif
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

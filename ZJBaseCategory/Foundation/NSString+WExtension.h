@@ -60,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isPureFloat:(NSString*)string;
 //检测密码
 - (BOOL)w_isSafePassword:(NSString *)strPwd;
+//去除html符号
++(NSString*)w_deleteHtmlTag:(NSString*)htmlStr;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -134,11 +134,11 @@
         data = [value dataUsingEncoding:NSUTF8StringEncoding];
     }else if ([value isKindOfClass:[NSData class]]){
         data  = value;
-    }else if ([value isKindOfClass:[NSNumber class]]){
-        data = [value dataUsingEncoding:NSUTF8StringEncoding];
     }else if ([value isKindOfClass:[NSArray class]] ||
               [value isKindOfClass:[NSDictionary class]]){
         data = [self objectToJson:value];
+    }else{
+        NSAssert([value isKindOfClass:[NSString class]]||[value isKindOfClass:[NSArray class]]||[value isKindOfClass:[NSDictionary class]]||[value isKindOfClass:[NSData class]], @"ZJBaseSaveData:value只能是基本数据类型，NSString、NSArray、NSDictionary、NSData");
     }
     return data;
 }

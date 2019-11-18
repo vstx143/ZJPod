@@ -378,4 +378,24 @@
         return NO;
     }
 }
+//去除html符号
++(NSString*)w_deleteHtmlTag:(NSString*)htmlStr{
+    NSString *normalStr = htmlStr.copy;
+       //判断字符串是否有效
+       if (!normalStr || normalStr.length == 0 || [normalStr isEqual:[NSNull null]]) return nil;
+       
+       //过滤正常标签
+       NSRegularExpression *regularExpression=[NSRegularExpression regularExpressionWithPattern:@"<[^>]*>" options:NSRegularExpressionCaseInsensitive error:nil];
+       normalStr = [regularExpression stringByReplacingMatchesInString:normalStr options:NSMatchingReportProgress range:NSMakeRange(0, normalStr.length) withTemplate:@""];
+       
+       //过滤占位符
+       NSRegularExpression *plExpression=[NSRegularExpression regularExpressionWithPattern:@"&[^;]+;" options:NSRegularExpressionCaseInsensitive error:nil];
+       normalStr = [plExpression stringByReplacingMatchesInString:normalStr options:NSMatchingReportProgress range:NSMakeRange(0, normalStr.length) withTemplate:@""];
+       
+       //过滤空格
+       NSRegularExpression *spaceExpression=[NSRegularExpression regularExpressionWithPattern:@"^\\s*|\\s*$" options:NSRegularExpressionCaseInsensitive error:nil];
+       normalStr = [spaceExpression stringByReplacingMatchesInString:normalStr options:NSMatchingReportProgress range:NSMakeRange(0, normalStr.length) withTemplate:@""];
+
+       return normalStr;
+}
 @end

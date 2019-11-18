@@ -71,6 +71,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark -- 截屏
 + (UIImage *)w_screenShot;
+
+#pragma mark -- 压缩
+//质量压缩（字节）
+-(NSData *)w_compressQualityWithMaxLength:(NSInteger)maxLength;
+//大小压缩（字节）
+-(NSData *)w_compressBySizeWithMaxLength:(NSUInteger)maxLength;
+//综合先质量再大小（字节）
+-(NSData *)w_compressWithMaxLength:(NSUInteger)maxLength;
 @end
 
 NS_ASSUME_NONNULL_END
