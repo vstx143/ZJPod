@@ -173,8 +173,5 @@
             break;
     }
 }
--(void)dealloc{
-    
-}
 
 @end
