@@ -9,7 +9,7 @@
 #import "ZJCommonFilterController.h"
 #import "ZJCommonFilterModel.h"
 #import "ZJCommonFilterTopView.h"
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 @interface ZJCommonFilterController ()
 
 @property(nonatomic,strong) ZJCommonFilterTopView *topView;
