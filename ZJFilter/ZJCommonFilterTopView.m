@@ -8,13 +8,14 @@
 
 #import "ZJCommonFilterTopView.h"
 #import <Masonry/Masonry.h>
+#import "UIButton+WExtension.h"
 @implementation ZJCommonFilterTopView
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         self.clipsToBounds = YES;
         self.backgroundColor = self.backColor == nil ? UIColor.whiteColor:self.backColor;
-        UIButton *cancelBtn = [UIButton w_buttonWithTitle:@"取消" titleColor:self.leftColor == nil ? UIColor.grayColor:self.leftColor font:self.btnFont == nil?WFont_x(16):self.btnFont  target:self action:@selector(btnAction:)];
+        UIButton *cancelBtn = [UIButton w_buttonWithTitle:@"取消" titleColor:self.leftColor == nil ? UIColor.grayColor:self.leftColor font:self.btnFont == nil? [UIFont systemFontOfSize:16]:self.btnFont  target:self action:@selector(btnAction:)];
         cancelBtn.tag =0;
         [self addSubview:cancelBtn];
         [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -22,7 +23,7 @@
             make.width.mas_equalTo(60);
         }];
         //
-        UIButton *sureBtn = [UIButton w_buttonWithTitle:@"确定" titleColor:self.rightColor == nil ? UIColor.blueColor:self.rightColor font:self.btnFont == nil?WFont_x(16):self.btnFont target:self action:@selector(btnAction:)];
+        UIButton *sureBtn = [UIButton w_buttonWithTitle:@"确定" titleColor:self.rightColor == nil ? UIColor.blueColor:self.rightColor font:self.btnFont == nil?[UIFont systemFontOfSize:16]:self.btnFont target:self action:@selector(btnAction:)];
         [self addSubview:sureBtn];
         sureBtn.tag = 2;
         [sureBtn mas_makeConstraints:^(MASConstraintMaker *make) {
