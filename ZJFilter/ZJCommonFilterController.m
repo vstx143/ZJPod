@@ -120,7 +120,9 @@
 }
 -(void)sureAction{
     if (self.isMustSelected && [self filterSelectedItems].count == 0) {
-        [Toast makeAndroidToast:@"至少选择一个"];
+        if ([self.delegate respondsToSelector:@selector(mustSelectTip)]) {
+            [self.delegate mustSelectTip];
+        }
         return;
     }
     if (self.ClickFilterBlock) {

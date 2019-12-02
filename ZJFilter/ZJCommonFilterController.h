@@ -21,12 +21,17 @@
 -(ZJCommonFilterTopView*_Nullable)ZJ_TopView;
 
 @end
+
+@protocol ZJCommonFilterControllerDelegate <NSObject>
+-(void)mustSelectTip;
+@end
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZJCommonFilterController : ZJBaseTableViewController
 @property(nonatomic,copy) void (^ClickFilterBlock)(NSString *title,id values);
 +(instancetype)filterCommonControllerWithItems:(NSArray<ZJCommonFilterModel*>*)items selectedItems:(NSArray<ZJCommonFilterModel*>*)selectedItems dataSource:(id<ZJCommonFilterControllerDataSource>) dataSource;
 //
+@property(nonatomic,assign) id<ZJCommonFilterControllerDelegate> delegate;
 @property(nonatomic,assign) BOOL isSingle;
 @property(nonatomic,assign) BOOL isMustSelected;
 @end

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
 spec.name         = "ZJPod"
-spec.version      = "1.3.4"
+spec.version      = "1.3.5"
 spec.summary      = "Base Class "
 spec.description  = <<-DESC
 BaseViewController
@@ -26,6 +26,5 @@ spec.dependency "DZNEmptyDataSet"
 spec.dependency "MJRefresh"
 spec.dependency "AFNetworking"
 spec.dependency "Masonry"
-spec.dependency "Toast"
 end
 
