@@ -10,6 +10,8 @@
 #import "ZJCommonFilterModel.h"
 #import "ZJCommonFilterTopView.h"
 #import <Masonry/Masonry.h>
+#import "UIViewController+PresentBottom.h"
+#import "ZJBaseConstant.h"
 @interface ZJCommonFilterController ()
 
 @property(nonatomic,strong) ZJCommonFilterTopView *topView;
