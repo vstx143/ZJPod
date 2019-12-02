@@ -25,5 +25,6 @@ spec.requires_arc = true
 spec.dependency "DZNEmptyDataSet"
 spec.dependency "MJRefresh"
 spec.dependency "AFNetworking"
+spec.dependency "Masonry"
 end
 
