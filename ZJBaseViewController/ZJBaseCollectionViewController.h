@@ -11,10 +11,11 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZJBaseCollectionViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BaseRefreshDelegate>
+@interface ZJBaseCollectionViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,BaseRefreshDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,strong) UICollectionView *w_collectionView;
 @property(nonatomic,assign) int currentPage;
 @property(nonatomic,weak) id<BaseRefreshDelegate> refreshDelegate;
+@property(nonatomic,assign) BOOL w_showEmpty;
 -(void)addRefreshFunction:(WRefreshType) refreshType;
 -(void)startRequest;
 

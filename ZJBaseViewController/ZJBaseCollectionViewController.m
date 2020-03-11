@@ -48,6 +48,8 @@
     }
     self.currentPage = 1;
     self.refreshDelegate =self;
+    //
+    self.w_showEmpty = YES;
 }
 #pragma mark - UICollectionViewDataSource,UICollectionViewDelegate
 
@@ -69,11 +71,23 @@
         [self.w_collectionView.mj_footer beginRefreshing];
     }
 }
+#pragma mark --- 空数据展示页面
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    return [[NSAttributedString alloc]initWithString:@"暂无数据，点击刷新" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+}
+-(void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view{
+    [self startRequest];
+}
+
 #pragma mark --- r刷新状态
 -(void)pullUpLoadMore:(LoadEndCallBack)callBack{}
 -(void)pullDownRefresh:(LoadEndCallBack)callBack{}
 
 -(MJRefreshState)covertRefreshStateWithLoadState:(ZJLoadState)state{
+    if (self.w_showEmpty) {
+        self.w_collectionView.emptyDataSetSource = self;
+        self.w_collectionView.emptyDataSetDelegate = self;
+    }
     MJRefreshState lstate = MJRefreshStateIdle;
     switch (state) {
         case ZJLoadStateIdle:

@@ -44,17 +44,19 @@
         // Fallback on earlier versions
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.w_tableView.emptyDataSetSource = self;
-    self.w_tableView.emptyDataSetDelegate = self;
     //
     self.currentPage = 1;
     self.refreshDelegate = self;
+    //
+    self.w_showEmpty = YES;
 }
-#pragma mark --空数据
+#pragma mark --- 空数据展示页面
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
-    return [[NSAttributedString alloc]initWithString:@"暂无数据" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15],NSForegroundColorAttributeName:UIColor.darkGrayColor}];
+    return [[NSAttributedString alloc]initWithString:@"暂无数据，点击刷新" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
 }
-
+-(void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view{
+    [self startRequest];
+}
 #pragma mark --- table delegate 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 0;
@@ -86,6 +88,10 @@
 -(void)pullDownRefresh:(LoadEndCallBack)callBack{}
 
 -(MJRefreshState)covertRefreshStateWithLoadState:(ZJLoadState)state{
+    if (self.w_showEmpty) {
+        self.w_tableView.emptyDataSetSource = self;
+        self.w_tableView.emptyDataSetDelegate = self;
+    }
     MJRefreshState lstate = MJRefreshStateIdle;
     switch (state) {
         case ZJLoadStateIdle:
