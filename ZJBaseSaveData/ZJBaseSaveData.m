@@ -22,6 +22,7 @@
         if (_AESKey.length == 0) {
             _AESKey = [self md5String:NSStringFromClass([self class])];
         }
+        _AESKey = [_AESKey substringWithRange:NSMakeRange(0, 16)];
     }
     return self;
 }
@@ -158,7 +159,7 @@
     NSData *data = [self valueToData:value];
     char keyPtr[kCCKeySizeAES128 + 1];
     bzero(keyPtr, sizeof(keyPtr));
-    [_AESKey getCString:keyPtr maxLength:sizeof(_AESKey) encoding:NSUTF8StringEncoding];
+    [_AESKey getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
     NSUInteger dataLength = [data length];
     size_t bufferSize = dataLength + kCCBlockSizeAES128;
     void *buffer = malloc(bufferSize);
@@ -183,7 +184,7 @@
 -(NSData*)decodeValue:(NSData*)value{
     char keyPtr[kCCKeySizeAES128 + 1];
     bzero(keyPtr, sizeof(keyPtr));
-    [_AESKey getCString:keyPtr maxLength:sizeof(_AESKey) encoding:NSUTF8StringEncoding];
+    [_AESKey getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
     NSUInteger dataLength = [value length];
     size_t bufferSize = dataLength + kCCBlockSizeAES128;
     void *buffer = malloc(bufferSize);
